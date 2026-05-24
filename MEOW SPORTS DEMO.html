@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEOW SPORTS | Global B2B Apparel Manufacturing & OEM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --brand-green: #00FF41; /* Pure Industrial Green */
+            --bg-black: #000000;
+            --surface-dark: #0A0A0A;
+            --text-white: #FFFFFF;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--text-white);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .font-bebas { font-family: 'Bebas Neue', cursive; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        .green-glow {
+            text-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
+        }
+
+        .green-border-glow {
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.15);
+        }
+
+        .industrial-grid {
+            background-image: linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .glass-card {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 65, 0.1);
+        }
+
+        .glass-card:hover {
+            border-color: var(--brand-green);
+            background: rgba(0, 255, 65, 0.03);
+        }
+
+        .custom-cursor {
+            width: 8px;
+            height: 8px;
+            background: var(--brand-green);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.15s ease;
+        }
+
+        .cursor-follower {
+            width: 30px;
+            height: 30px;
+            border: 1px solid var(--brand-green);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
+        }
+
+        .step-gradient {
+            background: linear-gradient(to right, var(--brand-green), #008f11);
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: var(--brand-green); }
+
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        .scanline {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 255, 65, 0.1);
+            animation: scanline 8s linear infinite;
+        }
+    </style>
+</head>
+<body class="selection:bg-[#00FF41] selection:text-black">
+    <div class="custom-cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursor-follow"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-[100] px-8 py-6 flex justify-between items-center bg-black/80 backdrop-blur-md border-b border-white/5">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-white flex items-center justify-center rotate-45 group hover:rotate-90 transition-transform">
+                <span class="text-black font-black text-xs -rotate-45 group-hover:-rotate-90 transition-transform">M</span>
+            </div>
+            <span class="font-bebas text-3xl tracking-tighter text-white">MEOW<span class="text-[#00FF41]">SPORTS</span></span>
+        </div>
+        <div class="hidden md:flex items-center gap-12 text-[10px] font-bold uppercase tracking-[0.3em] text-white/60">
+            <a href="#services" class="hover:text-[#00FF41] transition-colors">Capabilities</a>
+            <a href="#factory" class="hover:text-[#00FF41] transition-colors">Factory Unit</a>
+            <a href="#products" class="hover:text-[#00FF41] transition-colors">Collections</a>
+            <a href="#contact" class="px-5 py-2 border border-[#00FF41] text-[#00FF41] hover:bg-[#00FF41] hover:text-black transition-all">Get Quote</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center px-8 overflow-hidden industrial-grid bg-black">
+        <div class="scanline"></div>
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#00FF41]/5 to-transparent"></div>
+        
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10 w-full pt-24 pb-40">
+            <div>
+                <div class="inline-block px-4 py-1 border border-[#00FF41]/30 text-[#00FF41] font-mono text-[10px] tracking-[0.3em] mb-6 uppercase">
+                    // Global Manufacturing Hub _ Active
+                </div>
+                <h1 class="font-bebas text-8xl md:text-[140px] leading-[0.85] mb-8 green-glow">
+                    HIGH SPEC <br/> <span class="text-white/40">APPAREL</span> <br/> UNITS
+                </h1>
+                <p class="font-mono text-white/50 text-sm md:text-base max-w-lg mb-12 leading-relaxed uppercase">
+                    Mass-scale OEM production for elite brands. 
+                    From fabric engineering to global fulfillment.
+                    Built for high performance, engineered for reliability.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6">
+                    <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="px-8 py-5 bg-[#00FF41] text-black font-bold uppercase tracking-[0.2em] text-xs hover:bg-white transition-all transform hover:-translate-y-1">
+                        Download Catalog 2024
+                    </button>
+                    <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="px-8 py-5 border border-white text-white font-bold uppercase tracking-[0.2em] text-xs hover:bg-white hover:text-black transition-all transform hover:-translate-y-1">
+                        Private Label Inquiry
+                    </button>
+                </div>
+            </div>
+
+            <div class="relative hidden lg:block">
+                <div class="absolute -inset-10 bg-[#00FF41]/10 blur-[100px] rounded-full"></div>
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&q=80&w=800" 
+                     alt="Garment manufacturing factory floor" 
+                     class="w-full grayscale border border-white/10 brightness-75 hover:grayscale-0 transition-all duration-700">
+                <div class="absolute -bottom-6 -left-6 glass-card p-6 border-l-4 border-l-[#00FF41]">
+                    <span class="block font-mono text-[10px] text-[#00FF41] mb-2 uppercase tracking-widest">Efficiency Status</span>
+                    <span class="block font-bebas text-4xl text-white">99.8% QC PASS</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Stat Bar -->
+        <div class="absolute bottom-0 left-0 w-full py-8 border-t border-[#00FF41]/20 bg-black/50 backdrop-blur-sm z-20">
+            <div class="max-w-7xl mx-auto px-8 flex flex-wrap justify-between items-center gap-8">
+                <div class="flex items-center gap-4">
+                    <span class="text-3xl font-bebas text-white">1M+</span>
+                    <span class="text-[9px] font-mono text-white/40 uppercase tracking-widest">Units / Year</span>
+                </div>
+                <div class="h-8 w-px bg-white/10 hidden md:block"></div>
+                <div class="flex items-center gap-4">
+                    <span class="text-3xl font-bebas text-white">850+</span>
+                    <span class="text-[9px] font-mono text-white/40 uppercase tracking-widest">Active Brands</span>
+                </div>
+                <div class="h-8 w-px bg-white/10 hidden md:block"></div>
+                <div class="flex items-center gap-4">
+                    <span class="text-3xl font-bebas text-white">22+</span>
+                    <span class="text-[9px] font-mono text-white/40 uppercase tracking-widest">Export Zones</span>
+                </div>
+                <div class="h-8 w-px bg-white/10 hidden md:block"></div>
+                <div class="flex items-center gap-4">
+                    <span class="text-3xl font-bebas text-[#00FF41]">LOW MOQ</span>
+                    <span class="text-[9px] font-mono text-white/40 uppercase tracking-widest">Customizable</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Capabilities Section -->
+    <section id="services" class="py-32 px-8 bg-black relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end gap-12 mb-24">
+                <h2 class="font-bebas text-6xl md:text-8xl text-white leading-none">Industrial <span class="text-[#00FF41]">Solutions</span></h2>
+                <p class="font-mono text-white/40 text-xs uppercase tracking-widest max-w-xs text-right border-l-2 border-[#00FF41] pl-6">
+                    Full-stack apparel logistics from textile prototyping to international shipment.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-1">
+                <div class="glass-card p-12 transition-all">
+                    <div class="w-10 h-10 border border-[#00FF41] flex items-center justify-center mb-8">
+                        <span class="text-[#00FF41] font-mono text-xs">01</span>
+                    </div>
+                    <h3 class="font-bebas text-4xl mb-6 text-white">Custom Private Label</h3>
+                    <p class="text-white/50 text-sm font-light leading-relaxed mb-8">Integrated branding systems. Woven labels, heat transfers, and custom hang-tagging tailored to your brand identity.</p>
+                    <a href="#" class="text-[10px] font-mono text-[#00FF41] uppercase tracking-[0.3em] font-bold hover:underline">Explore Method >></a>
+                </div>
+                <div class="glass-card p-12 bg-[#00FF41]/5 border-[#00FF41]/30">
+                    <div class="w-10 h-10 border border-[#00FF41] bg-[#00FF41] flex items-center justify-center mb-8">
+                        <span class="text-black font-mono text-xs">02</span>
+                    </div>
+                    <h3 class="font-bebas text-4xl mb-6 text-white text-glow">Unit Production</h3>
+                    <p class="text-white/70 text-sm font-light leading-relaxed mb-8">Specialized cut-and-sew units for activewear, gymwear, and performance athletics with flat-lock stitching technology.</p>
+                    <a href="#" class="text-[10px] font-mono text-white uppercase tracking-[0.3em] font-bold">Inquire Capacity >></a>
+                </div>
+                <div class="glass-card p-12 transition-all">
+                    <div class="w-10 h-10 border border-[#00FF41] flex items-center justify-center mb-8">
+                        <span class="text-[#00FF41] font-mono text-xs">03</span>
+                    </div>
+                    <h3 class="font-bebas text-4xl mb-6 text-white">Textile Engineering</h3>
+                    <p class="text-white/50 text-sm font-light leading-relaxed mb-8">Direct mill access for bespoke fabric blends: moisture-wicking, anti-bacterial, and eco-friendly recycled polymers.</p>
+                    <a href="#" class="text-[10px] font-mono text-[#00FF41] uppercase tracking-[0.3em] font-bold hover:underline">View Fabrics >></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Factory Visual Showcase -->
+    <section id="factory" class="py-32 bg-[#0A0A0A] border-y border-[#00FF41]/10">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-5">
+                    <h2 class="font-bebas text-7xl text-white mb-8">The <span class="text-[#00FF41]">Production</span> Floor</h2>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <div class="w-5 h-5 bg-[#00FF41] mt-1 shrink-0"></div>
+                            <div>
+                                <h5 class="font-bebas text-2xl text-white">Surgical Precision</h5>
+                                <p class="text-white/40 text-xs font-mono uppercase">Automated laser fabric cutting for zero-tolerance accuracy.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-5 h-5 bg-white mt-1 shrink-0"></div>
+                            <div>
+                                <h5 class="font-bebas text-2xl text-white">4-Tier Quality Control</h5>
+                                <p class="text-white/40 text-xs font-mono uppercase">Individual garment inspection before final steam pressing.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-7 grid grid-cols-2 gap-4">
+                    <div class="aspect-square overflow-hidden border border-white/5 grayscale hover:grayscale-0 transition-all duration-700">
+                        <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover">
+                    </div>
+                    <div class="aspect-square overflow-hidden border border-white/5 grayscale hover:grayscale-0 transition-all duration-700 mt-12">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Grid -->
+    <section id="products" class="py-32 px-8 industrial-grid relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-center mb-24 border-b border-[#00FF41]/20 pb-12">
+                <h2 class="font-bebas text-6xl text-white uppercase">Ready <span class="text-white/30">Templates</span></h2>
+                <div class="text-right">
+                    <span class="text-[#00FF41] font-mono text-[10px] block uppercase tracking-[0.2em]">Live Inventory</span>
+                    <span class="text-white/40 font-mono text-[10px] block uppercase tracking-[0.2em]">Immediate Sampling Available</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Item -->
+                <div class="group relative overflow-hidden bg-black border border-white/5">
+                    <div class="aspect-[3/4] overflow-hidden grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
+                        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-60 group-hover:opacity-100">
+                    </div>
+                    <div class="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-black to-transparent">
+                        <h4 class="font-bebas text-3xl text-white mb-2">Technical Base-Layers</h4>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[#00FF41] font-mono text-[10px] tracking-widest uppercase">From $8.50 / Unit</span>
+                            <span class="text-white/40 font-mono text-[10px] uppercase">MOQ 50</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Copy for other categories -->
+                <div class="group relative overflow-hidden bg-black border border-white/5 lg:translate-y-8">
+                    <div class="aspect-[3/4] overflow-hidden grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
+                        <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-60 group-hover:opacity-100">
+                    </div>
+                    <div class="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-black to-transparent">
+                        <h4 class="font-bebas text-3xl text-white mb-2">Industrial Hoodies</h4>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[#00FF41] font-mono text-[10px] tracking-widest uppercase">From $18.20 / Unit</span>
+                            <span class="text-white/40 font-mono text-[10px] uppercase">MOQ 30</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden bg-black border border-white/5">
+                    <div class="aspect-[3/4] overflow-hidden grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
+                        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-60 group-hover:opacity-100">
+                    </div>
+                    <div class="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-black to-transparent">
+                        <h4 class="font-bebas text-3xl text-white mb-2">Seamless Leggings</h4>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[#00FF41] font-mono text-[10px] tracking-widest uppercase">From $12.40 / Unit</span>
+                            <span class="text-white/40 font-mono text-[10px] uppercase">MOQ 100</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden bg-black border border-white/5 lg:translate-y-8">
+                    <div class="aspect-[3/4] overflow-hidden grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
+                        <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover opacity-60 group-hover:opacity-100">
+                    </div>
+                    <div class="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-black to-transparent">
+                        <h4 class="font-bebas text-3xl text-white mb-2">Performance Shorts</h4>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[#00FF41] font-mono text-[10px] tracking-widest uppercase">From $9.10 / Unit</span>
+                            <span class="text-white/40 font-mono text-[10px] uppercase">MOQ 50</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Process -->
+    <section class="py-32 px-8 bg-black">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24">
+                <h2 class="font-bebas text-7xl text-white mb-4">Production <span class="text-[#00FF41]">Cycle</span></h2>
+                <span class="text-white/40 font-mono text-[10px] uppercase tracking-[0.5em]">Timeline: Sample(14D) -> Bulk(35-45D)</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="relative group">
+                    <span class="font-bebas text-8xl text-white/5 absolute -top-12 -left-4 group-hover:text-[#00FF41]/10 transition-colors">01</span>
+                    <div class="pt-12 border-t border-white/10 group-hover:border-[#00FF41] transition-all">
+                        <h5 class="text-white font-bebas text-2xl mb-4">Design Intake</h5>
+                        <p class="text-white/40 text-xs font-mono uppercase leading-relaxed">Submit tech-packs or CAD designs for engineering review.</p>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <span class="font-bebas text-8xl text-white/5 absolute -top-12 -left-4">02</span>
+                    <div class="pt-12 border-t border-white/10 group-hover:border-[#00FF41] transition-all">
+                        <h5 class="text-white font-bebas text-2xl mb-4">Master Proto</h5>
+                        <p class="text-white/40 text-xs font-mono uppercase leading-relaxed">Sample creation with customized fit and branding.</p>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <span class="font-bebas text-8xl text-white/5 absolute -top-12 -left-4">03</span>
+                    <div class="pt-12 border-t border-white/10 group-hover:border-[#00FF41] transition-all">
+                        <h5 class="text-white font-bebas text-2xl mb-4">Full Run</h5>
+                        <p class="text-white/40 text-xs font-mono uppercase leading-relaxed">Quality-controlled bulk production across mechanized units.</p>
+                    </div>
+                </div>
+                <div class="relative group">
+                    <span class="font-bebas text-8xl text-white/5 absolute -top-12 -left-4">04</span>
+                    <div class="pt-12 border-t border-white/10 group-hover:border-[#00FF41] transition-all">
+                        <h5 class="text-white font-bebas text-2xl mb-4">Final Exit</h5>
+                        <p class="text-white/40 text-xs font-mono uppercase leading-relaxed">Global export logistics and door-to-door delivery.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Meow B2B -->
+    <section id="contact" class="py-32 px-8 bg-[#00FF41]">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+            <div>
+                <h2 class="font-bebas text-8xl text-black mb-8 leading-tight">Scale Your <br/> Empire.</h2>
+                <div class="grid grid-cols-2 gap-8 text-black">
+                    <div>
+                        <span class="block font-mono text-[10px] uppercase font-bold mb-2">// Certification</span>
+                        <p class="font-bebas text-3xl">ISO 9001:2015</p>
+                    </div>
+                    <div>
+                        <span class="block font-mono text-[10px] uppercase font-bold mb-2">// Textile Source</span>
+                        <p class="font-bebas text-3xl">GOTS CERTS</p>
+                    </div>
+                </div>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-black p-8 flex justify-between items-center hover:translate-x-4 transition-transform cursor-pointer">
+                    <span class="text-white font-bebas text-3xl">Request Sample Kit</span>
+                    <span class="text-[#00FF41] font-mono">>></span>
+                </div>
+                <div class="bg-white p-8 flex justify-between items-center hover:translate-x-4 transition-transform cursor-pointer">
+                    <span class="text-black font-bebas text-3xl">B2B Trade Pricing</span>
+                    <span class="text-black font-mono">>></span>
+                </div>
+                <div class="bg-black p-8 flex justify-between items-center hover:translate-x-4 transition-transform cursor-pointer">
+                    <span class="text-white font-bebas text-3xl">Export Documents</span>
+                    <span class="text-[#00FF41] font-mono">>></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-24 px-8 border-t border-white/10 relative overflow-hidden">
+        <div class="industrial-grid absolute inset-0 opacity-20"></div>
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-24">
+                <div class="md:col-span-2">
+                    <span class="font-bebas text-5xl text-white mb-8 block">MEOW<span class="text-[#00FF41]">SPORTS</span></span>
+                    <p class="text-white/40 font-mono text-xs uppercase tracking-widest max-w-sm mb-12 leading-loose">
+                        Automating excellence in garment production. High yield, high quality, zero compromise.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://wa.me/447081234567" class="px-6 py-3 bg-[#00FF41] text-black font-mono text-[10px] font-bold uppercase hover:bg-white transition-colors">Direct WhatsApp Inquiry</a>
+                    </div>
+                </div>
+                <div>
+                    <h6 class="font-bebas text-2xl text-white mb-8">Units</h6>
+                    <ul class="text-white/40 font-mono text-[10px] space-y-4 uppercase tracking-[0.2em]">
+                        <li><a href="#" class="hover:text-[#00FF41]">OEM Gymwear</a></li>
+                        <li><a href="#" class="hover:text-[#00FF41]">Urban Lifestyle</a></li>
+                        <li><a href="#" class="hover:text-[#00FF41]">Performance Poly</a></li>
+                        <li><a href="#" class="hover:text-[#00FF41]">Global Logistics</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h6 class="font-bebas text-2xl text-white mb-8">Contact</h6>
+                    <p class="text-white/40 font-mono text-[10px] leading-loose uppercase tracking-[0.2em]">
+                        Industrial Zone IV<br/>
+                        Manufacturing Area S-20<br/>
+                        sales@meowsports.co<br/>
+                        +44 (0) 20 8123 4567
+                    </p>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8">
+                <span class="text-white/20 font-mono text-[9px] uppercase tracking-[0.3em]">© 2024 Meow Sports Manufacturing Unit. All Rights Reserved.</span>
+                <div class="flex gap-12">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/ISO_9001_Logo.png" class="h-10 opacity-20 grayscale brightness-200">
+                    <div class="text-[9px] font-mono text-white/40 uppercase tracking-widest border border-white/10 px-4 py-2">
+                        Export License: #XJ-88210-PRO
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/447081234567" class="fixed bottom-8 right-8 w-16 h-16 bg-[#00FF41] rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(0,255,65,0.4)] hover:scale-110 transition-transform z-50">
+        <svg fill="#000000" width="30" height="30" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </a>
+
+    <script>
+        // Custom Cursor Logic
+        const cursor = document.getElementById('cursor');
+        const follower = document.getElementById('cursor-follow');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            // Smoother following effect
+            setTimeout(() => {
+                follower.style.left = e.clientX + 'px';
+                follower.style.top = e.clientY + 'px';
+            }, 50);
+        });
+
+        // Hover expansions
+        document.querySelectorAll('button, a, .group').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                follower.style.width = '50px';
+                follower.style.height = '50px';
+                follower.style.backgroundColor = 'rgba(0, 255, 65, 0.1)';
+            });
+            el.addEventListener('mouseleave', () => {
+                follower.style.width = '30px';
+                follower.style.height = '30px';
+                follower.style.backgroundColor = 'transparent';
+            });
+        });
+
+        // GSAP Initialization
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Header Animations
+        gsap.from('h1', {
+            opacity: 0,
+            y: 100,
+            filter: "blur(20px)",
+            duration: 1.5,
+            ease: "expo.out"
+        });
+
+        // Scroll reveals
+        gsap.utils.toArray('section').forEach(section => {
+            gsap.fromTo(section,
+                { opacity: 0, y: 50 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: section,
+                        start: "top 85%",
+                        toggleActions: "play none none none"
+                    }
+                }
+            );
+        });
+    </script>
+</body>
+</html>
